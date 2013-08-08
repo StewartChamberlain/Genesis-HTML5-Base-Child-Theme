@@ -20,9 +20,6 @@ function sc_scripts_and_styles() {
 
     // modernizr
     wp_register_script( 'sc-modernizr', get_stylesheet_directory_uri() . '/js/modernizr.custom.min.js', array(), '2.6.2', false );
-	
-	// jquery
-	add_action( 'wp_enqueue_scripts', 'google_jquery_enqueue', 11 );
 
 	// register our stylesheet
 	wp_register_style( 'sc-stylesheet', get_stylesheet_directory_uri() . '/style.css', array(), '', 'all' );
@@ -38,42 +35,7 @@ function sc_scripts_and_styles() {
 	wp_enqueue_style( 'sc-stylesheet' );
     wp_enqueue_style( 'sc-ie-only' );
 	wp_enqueue_script( 'sc-js' );
-	
-	// Enqueue jQuery from Google CDN. Uses the currently registered WordPress jQuery version.
-function google_jquery_enqueue() { 
-	
-	// Probably not necessary if called with the 'wp_enqueue_scripts' action.
-	if (is_admin()) return; 
-	global $wp_scripts; 
-	
-	// Change  this flag to have the CDN script triggered by wp_footer instead of wp_head.
-	$cdn_script_in_footer = false;
-	   
-	//Register jQuery from Google CDN.
-	if (is_a( $wp_scripts, 'WP_Scripts' ) && isset($wp_scripts->registered['jquery'])) {
-		   
-		// The WordPress jQuery version. 
-		$registered_jquery_version = $wp_scripts -> registered[jquery] -> ver;
-		if($registered_jquery_version) {
-			  
-			// The jQuery Google CDN URL. Makes a check for HTTP on top of SSL/TLS (HTTPS) to make sure the URL is correct.
-			$google_jquery_url = ( $_SERVER['SERVER_PORT'] == 443 ? "https" : "http") . 
-			"://ajax.googleapis.com/ajax/libs/jquery/$registered_jquery_version/jquery.min.js";
-	 
-			// Get the HTTP header response for the this URL, and check that its ok. If ok, include jQuery from Google CDN. 
-			if(200 === wp_remote_retrieve_response_code(wp_remote_head( $google_jquery_url ))) {
-			wp_deregister_script( 'jquery' );
-			wp_register_script( 'jquery', $google_jquery_url , false, null, $cdn_script_in_footer );
-			}
-		}
-	}
-	/* 
-	Enqueue jQuery from Google if available. Fall back to the local WordPress default.
-	If the local WordPress jQuery is called, it will get included in the header no 
-	matter what the $cdn_script_in_footer flag is set to.
-	*/
 	wp_enqueue_script( 'jquery' ); 
-}
 
     // deregister the superfish scripts
     wp_deregister_script( 'superfish' );
