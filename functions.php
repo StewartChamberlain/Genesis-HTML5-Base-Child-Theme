@@ -35,8 +35,8 @@ function sc_theme_setup() {
 
 /************* THEME SUPPORT *************/
 	
-	// Turn On HTML5 Markup @since GENESIS 2.0
-	add_theme_support( 'genesis-html5' );
+	// Turn On HTML5 Markup @since GENESIS 2.0 final
+	add_theme_support( 'html5' );
 	
 	// Add structural support
 	//add_theme_support( 'genesis-structural-wraps', array( 'header', 'nav', 'subnav', 'inner', 'footer-widgets', 'footer' ) );
