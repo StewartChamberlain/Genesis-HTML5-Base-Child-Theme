@@ -23,14 +23,6 @@ function sc_footer_cred( $sc_ft ) {
 }
 
 
-// Customizing text from back to top link
-function sc_backtotop_text( $backtotop ) {
-	// Simply replace what's inside the "..."
-    $backtotop = '[footer_backtotop text="Back To Top"]';
-    return $backtotop;
-}
-
-
 /*
 * Custom Breadcrumbs
 *
