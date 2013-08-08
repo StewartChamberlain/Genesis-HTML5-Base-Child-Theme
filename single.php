@@ -14,8 +14,8 @@
 /************* CUSTOMIZE THE POST INFO *************/
 
 // Remove the post info function and/or reposition
-//remove_action( 'genesis_entry_header', 'genesis_post_info' );
-//add_action( 'genesis_entry_header', 'genesis_post_info', 2 );
+//remove_action( 'genesis_entry_header', 'genesis_post_info' 12 );
+//add_action( 'genesis_entry_header', 'genesis_post_info', 12 );
 
 // Customize the post info function
 //add_filter( 'genesis_post_info', 'post_info_filter' );
